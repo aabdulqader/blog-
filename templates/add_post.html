@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Create Post{% endblock title %}
+{% block content %}
+
+    <!--================ Start banner Area =================-->
+    <section class="banner-area relative">
+      <div class="overlay overlay-bg"></div>
+      <div class="banner-content text-center">
+        <h1>Create An Article</h1>
+      </div>
+    </section>
+    <!--================ End banner Area =================-->
+
+
+    <div class="jumbotron mb-0">
+        <div class="container ">
+            <div class="container col-md-8">
+                <form method = 'POST'>
+                {% csrf_token %}
+                    <fieldset class = 'form-group'>                        
+                        {{ form.as_p}}
+
+                    </fieldset>
+                    
+                    <div class = 'form-group'>
+                        <button type="submit" class="btn btn-outline-info float-right py-1">Post</button>
+                    </div>        
+                </form>
+                <div class = 'form-group col-md-8'>
+                    <button type="submit" class="btn btn-outline-warning float-right py-1"><a href="{% url 'add_category' %}">Add Category</a></button>
+                </div> 
+            </div>
+        </div>
+    </div>  
+
+{% endblock content %}
+
+

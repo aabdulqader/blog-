@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block logoutactive %}active{% endblock logoutactive %}
+{% block title %}Logged Out{% endblock title %}
+{% block content %}
+    <div class="jumbotron mt-5  ">
+        <div class="container col-md-8 ">
+            <h1 class='text-center font-weight-bold mb-4'>You're Logged out</h1>
+            <div class="container">
+                <div class="border-top pt-2">
+
+                    Want to Login Again? <a href="{% url 'login' %}" class="font-weight-bold text-primary ml-2 h3">Login</a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+            
+{% endblock content %}
+

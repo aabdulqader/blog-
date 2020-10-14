@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Edit Post{% endblock title %}
+{% block content %}
+
+    <!--================ Start banner Area =================-->
+    <section class="banner-area relative">
+      <div class="overlay overlay-bg"></div>
+      <div class="banner-content text-center">
+        <h1>Update This Article</h1>
+      </div>
+    </section>
+    <!--================ End banner Area =================-->
+
+    {% if user.is_authenticated %}
+        {% if user.id == post.author.id %}
+            <div class="jumbotron mb-0">
+                <div class="container ">
+                    <div class="container col-md-8">
+                        <form method = 'POST'>
+                        {% csrf_token %}
+                            <fieldset class = 'form-group'>                        
+                                {{ form.as_p}}
+
+                            </fieldset>
+                            <div class = 'form-group'>
+                                <button type="submit" class="btn btn-info float-right py-1">Update</button>
+                            </div>
+                                
+                        </form>
+                        <button class="btn btn-outline-danger float-left py-1">
+                            <a href="{% url 'del_post' post.pk  %}"><spam class='ti-trash mr-1 text-warning'>Delete</spam></a> 
+                        </button>
+
+                    </div>
+                    <div class="container ">
+                        <button class="btn btn-outline-info float-right py-1 mr-5">
+                            <a href="{% url 'article_details' post.pk  %}"><spam class='ti-close mr-1 text-success'>Cancel</spam></a> 
+                        </button>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <h1>you are not allowed here....</h1>
+
+        {% endif %}
+
+    {% else %}
+        <h1>you are not allowed here....</h1>
+    {% endif %}
+
+{% endblock content %}

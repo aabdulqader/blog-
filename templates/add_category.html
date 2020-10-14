@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Add Category{% endblock title %}
+{% block content %}
+
+    <!--================ Start banner Area =================-->
+    <section class="banner-area relative">
+      <div class="overlay overlay-bg"></div>
+      <div class="banner-content text-center">
+        <h1>Create A New Blog Category</h1>
+      </div>
+    </section>
+    <!--================ End banner Area =================-->
+
+
+        <div class="jumbotron mb-0">
+        <div class="container ">
+            <div class="container col-md-8">
+                <form method = 'POST'>
+                {% csrf_token %}
+                    <fieldset class = 'form-group'>                        
+                        {{ form.as_p}}
+
+                    </fieldset>
+                    <div class = 'form-group'>
+                        <button type="submit" class="btn btn-outline-info float-right py-1">Add</button>
+                    </div>      
+                </form>
+                
+            </div>
+        </div>
+        </div>  
+
+{% endblock content %}
+
+

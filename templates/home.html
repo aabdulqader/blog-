@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block content %}
+
+    <!--================ Start Blog Post Area =================-->
+    <section class="blog-post-area section-gap relative">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="row">
+              {% for post in object_list %}
+              <div class="col-lg-6 col-md-6">
+                <div class="single-amenities">
+                  <div class="amenities-thumb">
+                    <img
+                      class="img-fluid w-100"
+                      src="{% static 'img/blog-post/blog-post1.jpg' %}"
+                      alt=""
+                    />
+                  </div>
+                  <div class="amenities-details">
+                    <h5>
+                      <a href="{% url 'article_details' post.pk  %}"
+                        >{{post.title}}
+                      </a>
+                    </h5>
+                    <div class="amenities-meta mb-10">
+                      <a href="#" class=""
+                        ><span class="ti-calendar"></span>{{post.time}}</a
+                      >
+                      <a href="#" class="ml-20"
+                        ><span class="ti-comment"></span>05</a
+                      >
+                    </div>
+                    <p>
+                      {{post.body|slice:250|safe}}
+                    </p>
+
+                    <div class="d-flex justify-content-between mt-20">
+                      <div>
+                        <a href="{% url 'article_details' post.pk  %}" class="blog-post-btn">
+                          Read More <span class="ti-arrow-right"></span>
+                        </a>
+                      </div>
+                      <div class="category">
+                        <a href="{% url 'category' post.category|slugify  %}">
+                            <span class="ti-folder mr-1"></span> {{post.category}}
+                        </a>
+                        <a class='float-right ml-4'href="{% url 'edit' post.pk  %}">
+                            <span class="ti-pencil-alt font-weight-bold text-warning mr-2"></span><strong>Edit</strong> 
+                        </a>
+                        <a class='float-right'href="{% url 'del_post' post.pk  %}">
+                            <span class="ti-trash font-weight-bold text-danger mr-2"></span><strong>Delete</strong> 
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+              </div>
+              {% endfor %}
+            </div>
+            
+
+            <div class="row">
+              <div class="col-lg-12">
+                  <nav class="blog-pagination justify-content-center d-flex">
+                      <ul class="pagination">
+                          <li class="page-item">
+                              <a href="#" class="page-link" aria-label="Previous">
+                                  <span aria-hidden="true">
+                                      <span class="ti-arrow-left"></span>
+                                  </span>
+                              </a>
+                          </li>
+                          <li class="page-item"><a href="#" class="page-link">01</a></li>
+                          <li class="page-item active"><a href="#" class="page-link">02</a></li>
+                          <li class="page-item"><a href="#" class="page-link">03</a></li>
+                          <li class="page-item"><a href="#" class="page-link">04</a></li>
+                          <li class="page-item"><a href="#" class="page-link">09</a></li>
+                          <li class="page-item">
+                              <a href="#" class="page-link" aria-label="Next">
+                                  <span aria-hidden="true">
+                                      <span class="ti-arrow-right"></span>
+                                  </span>
+                              </a>
+                          </li>
+                      </ul>
+                  </nav>
+              </div>
+            </div>
+          </div>
+
+          <!-- Start Blog Post Siddebar -->
+          <div class="col-lg-4 sidebar-widgets">
+              <div class="widget-wrap">
+                <div class="single-sidebar-widget search-widget">
+                  <form class="search-form" action="#">
+                    <input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                  </form>
+                </div>
+                <div class="single-sidebar-widget post-category-widget">
+                  <h4 class="category-title">Catgories</h4>
+                  <ul class="cat-list mt-20">
+                    {% for cats in category_menu %}
+                    <li>
+                      <a href="{% url 'category' cats|slugify %}" class="d-flex justify-content-between">
+                        <p>{{cats}}</p>
+                        <p>5</p>
+                      </a>
+                    </li>
+                    {% endfor %}                    
+                  </ul>
+                </div>
+
+                
+
+                  <div class="single-sidebar-widget share-widget">
+                    <h4 class="share-title">Share this post</h4>
+                    <div class="social-icons mt-20">
+                      <a href="#">
+                        <span class="ti-facebook"></span>
+                      </a>
+                      <a href="#">
+                        <span class="ti-twitter"></span>
+                      </a>
+                      <a href="#">
+                        <span class="ti-pinterest"></span>
+                      </a>
+                      <a href="#">
+                        <span class="ti-instagram"></span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <!-- End Blog Post Siddebar -->
+        </div>
+      </div>
+    </section>
+    <!--================ End Blog Post Area =================-->
+
+
+{% endblock content %}
