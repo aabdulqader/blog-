@@ -19,7 +19,7 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="main_blog_details"> 
-                        <img class="img-fluid" src="{{post.image}}" alt="">
+                        <img class="img-fluid" widget='900px' height='560px' src="{{post.image.url}}"  alt="">
                         <h1 class='my-4'>{{post.title}}</h1>
                         <div class="user_details">
                             <div class="float-left">
@@ -50,7 +50,7 @@
                         <blockquote class="blockquote">
                             <p class="mb-0">{{post.body|slice:200|safe}}</p>
                         </blockquote>
-                        <p>{{post.body}}</p>
+                        <p>{{post.body|safe}}</p>
                         <div class="news_d_footer flex-column flex-sm-row">
                             <form action="{% url 'like_post' post.pk %}" method ='POST'>
                                 {% csrf_token %}

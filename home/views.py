@@ -26,7 +26,7 @@ def LikeView(request, pk):
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
-    ordering = ['-time']
+    ordering = ['-id']
     #ordering = ['id']
 
     def get_context_data(self, **kwargs):

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'crispy_forms',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
