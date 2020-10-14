@@ -1,7 +1,7 @@
 
 from django.urls import path, include
 from . import views
-from .views import HomeView, ArticleDetailView, CreatePostView, UpdatePostView, DeletePostView, AddCategoryView, CategoryView
+from .views import HomeView, ArticleDetailView, CreatePostView, UpdatePostView, DeletePostView, AddCategoryView, CategoryView, LikeView
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
@@ -16,6 +16,8 @@ urlpatterns = [
     path('category/<slug:slug>/', CategoryView, name = 'category'),
     path('article/edit/<int:pk>', UpdatePostView.as_view(), name = 'edit'),
     path('article/<int:pk>/delete', DeletePostView.as_view(), name = 'del_post'),
+    path('like/<int:pk>', LikeView, name = 'like_post'),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
