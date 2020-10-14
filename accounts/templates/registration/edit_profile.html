@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block signupactive %}active{% endblock signupactive %}
-{% block title %}SignUp{% endblock title %}
+{% block title %}Edit Profile{% endblock title %}
 {% block content %}
     <body class='bg-info'>
         <div class="jumbotron m-5 ">
             <div class="container">
-                <h1 class='text-center font-weight-bold mb-4'>Create Your Account</h1>
+                <h1 class='text-center font-weight-bold mb-4'>Update Your Account</h1>
                 <div class="container">
                     <form method = 'POST'>{% csrf_token %}
                         <fieldset class = 'form-group'>                        
@@ -14,8 +14,8 @@
                             {{ form | crispy }}
 
                         </fieldset>
-                        <div class = 'form-group'>
-                            <button type="submit" class="btn btn-outline-info py-1">Sign Up</button>
+                        <div class = 'form-group '>
+                            <button type="submit" class="btn btn-outline-primary float-right py-1">Update</button>
                         </div>      
                     </form>
                     <div class="border-top pt-2">
