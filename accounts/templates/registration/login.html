@@ -1,9 +1,10 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block signinactive %}active{% endblock signinactive %}
-{% block title %}SignIn{% endblock title %}
+{% block title %}Log In{% endblock title %}
 {% block content %}
-    <div class="jumbotron mt-5  ">
+
+    <div class="jumbotron m-5 bg-info  ">
         <div class="container col-md-8">
             <h1 class='text-center font-weight-bold mb-4'>Log in </h1>
             <div class="container">
@@ -13,14 +14,14 @@
                         <!--{{ form.as_p}}-->
                         {{ form | crispy }}
                     </fieldset>
-                    <div class = 'form-group'>
-                        <button type="submit" class="btn btn-outline-success py-1">Log In</button>
-                        <p><a href="{% url 'password_reset' %}">Forgot Password?</a></p>
+                    <div class = 'form-group mb-4'>
+                        <button type="submit" class="btn btn-outline-warning float-right py-1 ">Log In</button>
+                        <p><a href="{% url 'password_reset' %}"><strong class='h6'>Forgot Password?</strong></a></p>
                     </div>      
                 </form>
                 <div class="border-top pt-2">
-                    <small class="text-muted h6">
-                        Create An Account? <a href="{% url 'login' %}" class="ml-2 h5">Sign Up</a>
+                    <small class="text-light h6">
+                        Create An Account <a href="{% url 'login' %}" class="ml-2 h5">Sign Up</a>
                     </small>
                 </div>
             </div>

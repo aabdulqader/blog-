@@ -3,27 +3,29 @@
 {% block signupactive %}active{% endblock signupactive %}
 {% block title %}SignUp{% endblock title %}
 {% block content %}
-    <div class="jumbotron mt-5 ">
-        <div class="container col-md-8">
-            <h1 class='text-center font-weight-bold mb-4'>Create Your Account</h1>
+    <body class='bg-info'>
+        <div class="jumbotron m-5 ">
             <div class="container">
-                <form method = 'POST'>{% csrf_token %}
-                    <fieldset class = 'form-group'>                        
-                        <!--{{ form.as_p}}-->
-                        {{ form | crispy }}
+                <h1 class='text-center font-weight-bold mb-4'>Create Your Account</h1>
+                <div class="container">
+                    <form method = 'POST'>{% csrf_token %}
+                        <fieldset class = 'form-group'>                        
+                            <!--{{ form.as_p}}-->
+                            {{ form | crispy }}
 
-                    </fieldset>
-                    <div class = 'form-group'>
-                        <button type="submit" class="btn btn-outline-info py-1">Sign Up</button>
-                    </div>      
-                </form>
-                <div class="border-top pt-2">
-                    <small class="text-muted h6">
-                        Already Have An Account? <a href="{% url 'login' %}" class="ml-2 h5">Sign In</a>
-                    </small>
+                        </fieldset>
+                        <div class = 'form-group'>
+                            <button type="submit" class="btn btn-outline-info py-1">Sign Up</button>
+                        </div>      
+                    </form>
+                    <div class="border-top pt-2">
+                        <small class="text-muted h6">
+                            Already Have An Account? <a href="{% url 'login' %}" class="ml-2 h5">Sign In</a>
+                        </small>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </body>
 {% endblock content %}
 
