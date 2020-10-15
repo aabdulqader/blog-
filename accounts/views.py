@@ -1,9 +1,37 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import generic
+from django.views.generic import DetailView
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView, PasswordChangeDoneView
 from django.urls import reverse_lazy
 from .forms import SignUpForm, EditProfileForm
+from home.models import Profile, Post
+
+
+
+class ShowProfilePageView(DetailView):
+    model = Profile
+    template_name = 'registration/profile.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        page_user = get_object_or_404(Profile, id=self.kwargs['pk'])
+        context["page_user"] = page_user 
+        return context
+
+
+
+def MyAccountView(request, pk):
+    posts = Post.objects.all()
+    data = Profile.objects.all()
+    context = {'posts':posts, 'data':data}
+    return render(request,'registration/my_account.html', context )
+
+class EditProfileView(generic.UpdateView):
+    model = Profile
+    fields = ['bio','profile_pic','website_url','facebook_url','linkedin_url','instagram_url','twitter_url']
+    template_name = 'registration/edit_profile_page.html'
+    success_url = reverse_lazy('my_account')
 
 
 
@@ -16,7 +44,7 @@ class UserSighupView(generic.CreateView):
 
 class UserEditView(generic.UpdateView):
     form_class = EditProfileForm
-    template_name = 'registration/edit_profile.html'
+    template_name = 'registration/settings.html'
     success_url = reverse_lazy('login')
 
     def get_object(self):
@@ -30,8 +58,3 @@ class PasswordsChangeView(PasswordChangeView):
 
 def passwordsChangeDoneView(request):
     return render(request, 'registration/success_password.html')
-
-'''   
-class passwordsChangeDoneView(PasswordChangeDoneView):
-    success_url = reverse_lazy('password_success')
-'''

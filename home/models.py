@@ -23,7 +23,7 @@ class Post(models.Model):
     #body = models.TextField()
     body = RichTextField(blank=True, null=True)
     snippet = RichTextField(blank=True, null=True)
-    image = models.ImageField(default='default.jpg',upload_to='images/' )
+    image = models.ImageField(blank=True, null=True,upload_to='images/' )
     time = models.DateField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
@@ -50,6 +50,26 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.name + ' | ' + self.desc   
+
+
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
+    bio = models.TextField()
+    profile_pic = models.ImageField(default = 'default.jpg', null=True, blank=True,upload_to='profile_pic/' )
+    website_url = models.CharField(max_length=255, null=True, blank=True)
+    facebook_url = models.CharField(max_length=255, null=True, blank=True)
+    linkedin_url = models.CharField(max_length=255, null=True, blank=True)
+    instagram_url = models.CharField(max_length=255, null=True, blank=True)
+    twitter_url = models.CharField(max_length=255, null=True, blank=True)
+
+
+    def __str__(self):
+        return str(self.user)
+
+
+
 
     
 

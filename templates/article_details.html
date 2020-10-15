@@ -37,11 +37,16 @@
                             <div class="float-right mt-sm-0 mt-3">
                                 <div class="media">
                                     <div class="media-body">
-                                        <h5>{{post.author}}</h5>
+                                        <a href="{% url 'show_profile' post.author.profile.id %}"> <h5>{{post.author}}</h5></a>
                                         <p>{{post.time|date:'D d M Y'}}</p>
                                     </div>
+                                    
                                     <div class="d-flex">
-                                        <img src="{% static 'img/blog/user-img.jpg' %}" alt="">
+                                        {% if post.author.profile.profile_pic  %}
+                                            <a href="{% url 'show_profile' post.author.profile.id %}"><img class='rounded-circle' src="{{post.author.profile.profile_pic.url}}" width='50' height='50' alt=""></a> 
+                                        {% else %}
+                                            <a href="{% url 'show_profile' post.author.profile.id %}"> <img class='rounded-circle' src="{% static 'default_pics/profile_pic.jpg' %}" width='50' height='50' alt=""></a>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </div>

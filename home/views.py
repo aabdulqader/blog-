@@ -103,3 +103,5 @@ class DeletePostView(DeleteView):
     success_url = reverse_lazy('home')
 
 
+
+

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Edit Profile Page{% endblock title %}
+{% block content %}
+
+    <!--================ Start banner Area =================-->
+    <section class="banner-area relative">
+      <div class="overlay overlay-bg"></div>
+      <div class="banner-content text-center">
+        <h1>Edit Profile Page</h1>
+      </div>
+    </section>
+    <!--================ End banner Area =================-->
+
+
+    <div class="jumbotron m-5">
+        <div class="container ">
+            <div class="container col-md-9">
+                <form method = 'POST' enctype='multipart/form-data'>
+                    {% csrf_token %}
+                    <fieldset class = 'form-group'>                        
+                        {{ form| crispy}}
+                        {{ form.media}}
+                    </fieldset>
+                    
+                    <div class = 'form-group'>
+                        <button type="submit" class="btn btn-outline-info float-right py-1">Update</button>
+                    </div>        
+                </form>
+                
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var name = '{{user.id}}';
+        document.getElementById('elder').value = name;
+    </script>
+{% endblock content %}
+
+

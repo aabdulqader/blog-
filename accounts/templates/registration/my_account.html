@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}{{user}}{% endblock title %}
+{% block content %}
+<body style="background: #9370DB;" >
+    <div class="container-relative m-5 ">
+        <div class="card text-center">
+            <div style="background:	#DCDCDC;"  class="card-header h4 font-weight-bold">
+                {{user.username}}
+            </div>
+            <div class="card-body" style="background: 	#E6E6FA;">
+                <div class="container m-5">
+
+                    {% if user.profile.profile_pic  %}
+                        <img class='rounded-circle' src="{{user.profile.profile_pic.url}}" width='200' height='200' alt="">
+                    {% else %}
+                        <img class='rounded-circle' src="{% static 'default_pics/profile_pic.jpg' %}" width='200' height='200' alt="">
+                    {% endif %}
+
+                </div>
+                <h3 class="card-title">{{user.first_name}} {{user.last_name}}</h3>
+                <hr width='150'>
+                <div class="container col-md-9">
+                    <p class="card-text">{{user.profile.bio}}</p>
+                </div>
+                <hr class='col-md-8'>
+                <h5>{{user.email}}</h5>
+            </div>
+            <div class="card-footer ">
+                {% if user.profile.website_url %}
+                    <a href="{{user.profile.website_url}}"><span class="ti-google mx-3"> </span></a>
+                {% endif %}
+                {% if user.profile.instagram_url %}
+                    | <a href="{{user.profile.instagram_url}}"><span class="ti-instagram mx-3"> </span></a>
+                {% endif %}
+                
+                {% if user.profile.facebook_url %}
+                    | <a href="{{user.profile.facebook_url}}"><span class="ti-facebook mx-3"> </span></a>
+                {% endif %}
+                {% if user.profile.linkedin_url %}
+                    | <a href="{{user.profile.linkedin_url}}"><span class="ti-linkedin mx-3"> </span></a>
+                {% endif %}
+                {% if user.profile.twitter_url %}
+                    | <a href="{{user.profile.twitter_url}}"><span class="ti-twitter mx-3"> </span></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+
+
+{% endblock content %}
+

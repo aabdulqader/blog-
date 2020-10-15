@@ -67,9 +67,10 @@
                       {{user.username}}
                     </a>
                     <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item" href="#">My Account</a>
+                      <a class="dropdown-item" href="{% url 'my_account' user.pk %}">My Account</a>
+                      <a class="dropdown-item" href="{% url 'edit_profile' user.profile.id %}">Update Account</a>
                       <hr>
-                      <a class="dropdown-item" href="{% url 'edit_profile' %}">Edit Profile</a>
+                      <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
                       <a class="dropdown-item" href="{% url 'logout' %}">log out</a>                    
                     </div>
                     {% else %}
