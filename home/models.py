@@ -23,7 +23,7 @@ class Post(models.Model):
     #body = models.TextField()
     body = RichTextField(blank=True, null=True)
     snippet = RichTextField(blank=True, null=True)
-    image = models.ImageField(default='default.jpg',upload_to='media' )
+    image = models.ImageField(default='default.jpg',upload_to='images/' )
     time = models.DateField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='blog_posts')
 

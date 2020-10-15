@@ -19,9 +19,8 @@ class PostForm(forms.ModelForm):
             'category': forms.Select( choices=choices_list, attrs={'class':'form-control'}),
             'author': forms.TextInput(attrs={'class':'form-control','value':'', 'id':'elder', 'type':'hidden' }),
             #'author': forms.Select(attrs={'class':'form-control'}),
-            'body': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Descriptions'}),
-            'snippet': forms.Textarea(attrs={'class':'form-control'}),
-            'image': forms.FileInput(attrs={'class':'form-control'}),
+            'body': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Descriptions'}),
+            'snippet': forms.TextInput(attrs={'class':'form-control'}),
 
         }
 
@@ -34,7 +33,6 @@ class UpdateForm(forms.ModelForm):
             'title': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter Title Name'}),
             'title_tag': forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Title Tag' }),
             'body': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Descriptions'}),
-            'image': forms.FileInput(attrs={'class':'form-control'}),
             'snippet': forms.Textarea(attrs={'class':'form-control'}),
 
         }
