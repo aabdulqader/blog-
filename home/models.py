@@ -23,7 +23,7 @@ class Post(models.Model):
     #body = models.TextField()
     body = RichTextField(blank=True, null=True)
     snippet = RichTextField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True,upload_to='images/' )
+    image = models.ImageField( default='default_post_img.jpg',blank=True, null=True,upload_to='images/' )
     time = models.DateField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='blog_posts')
 
@@ -67,6 +67,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return str(self.user)
+
+    def get_absolute_url(self):
+        return reverse('home')
 
 
 

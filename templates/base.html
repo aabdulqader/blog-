@@ -67,8 +67,15 @@
                       {{user.username}}
                     </a>
                     <div class="dropdown-menu bg-info" aria-labelledby="navbarDropdown">
+                      
                       <a class="dropdown-item" href="{% url 'my_account' user.pk %}">My Account</a>
-                      <a class="dropdown-item" href="{% url 'edit_profile' user.profile.id %}">Update Account</a>
+                      {% if user.profile.id %}
+                        <a class="dropdown-item" href="{% url 'edit_profile' user.profile.id %}">Update Profile</a>
+                      
+                      {% else %}
+                      <a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a>
+                      
+                      {% endif %}
                       <hr>
                       <a class="dropdown-item" href="{% url 'settings' %}">Settings</a>
                       <a class="dropdown-item" href="{% url 'logout' %}">log out</a>                    
