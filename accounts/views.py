@@ -9,7 +9,7 @@ from home.models import Profile, Post
 
 class CreateProfilePageView(CreateView):
     model = Profile
-    fields_class = ProfilePageForm
+    form_class = ProfilePageForm
     template_name = 'registration/create_user_profile_Page.html'
 
     def form_valid(self, form):

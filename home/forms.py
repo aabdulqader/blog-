@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Category
+from .models import Post, Category, Comment
 
 choices = Category.objects.all().values_list('name','name')
 
@@ -36,5 +36,20 @@ class UpdateForm(forms.ModelForm):
             'snippet': forms.Textarea(attrs={'class':'form-control'}),
 
         }
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'email','message')
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Enter Your Name'}),
+            'email': forms.TextInput(attrs={'class':'form-control','placeholder':'Enter Your Valid Email' }),
+            'message': forms.Textarea(attrs={'class':'form-control', 'placeholder':'message'}),
+
+        }
+
+        
 
 
