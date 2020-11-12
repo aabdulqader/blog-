@@ -1,7 +1,14 @@
 from django.contrib import admin
 from .models import Post, Contact, Category, Profile, Comment
 
-admin.site.register(Post)
+
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'title_tag', 'category', 'image', 'time')
+
+
+
+admin.site.register(Post, PostAdmin)
 admin.site.register(Contact)
 admin.site.register(Category)
 admin.site.register(Profile)
